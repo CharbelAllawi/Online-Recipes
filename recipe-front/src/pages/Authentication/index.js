@@ -4,14 +4,20 @@ import './style.css';
 import mainfood from "../../assets/authentication _Food.jpg"
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { sendRequest } from "../../core/config/request";
+import { requestMethods } from "../../core/enums/requestMethods";
+import { localStorageAction } from "../../core/config/localstorage";
+import { useNavigate } from "react-router-dom";
 
 function Authentication() {
+  const navigation = useNavigate();
+
   const [Logcredentials, setLogCredentials] = useState({
     email: null,
     password: null,
   });
   const [Regcredentials, setRegCredentials] = useState({
-    username: null,
+    name: null,
     email: null,
     password: null,
   });
@@ -21,7 +27,34 @@ function Authentication() {
   const toggleForm = () => {
     setIsLoginForm(!isLoginForm);
   };
+  const loginHandler = async () => {
 
+    try {
+      const response = await sendRequest({
+        method: requestMethods.POST,
+        route: "/login",
+        body: Logcredentials,
+      });
+      navigation("/landing");
+      localStorageAction("access_token", response.authorisation.token);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const registerHandler = async () => {
+
+    try {
+      const response = await sendRequest({
+        method: requestMethods.POST,
+        route: "/register",
+        body: Regcredentials,
+      });
+      console.log(response)
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <h1 className="auth1">Recipe <span className='sline'>Secret</span></h1>
@@ -55,7 +88,10 @@ function Authentication() {
                       password,
                     })
                   }
-                /><Button text={"Login"} />
+                />
+
+                <Button type="button" text={"Login"} onClick={(e) => loginHandler(e)} />
+
                 <div className="registerlink">
                   <p>
                     {isLoginForm
@@ -74,10 +110,10 @@ function Authentication() {
                   className="authbtn"
                   label={"Username"}
                   placeholder={"Type your username here..."}
-                  onChange={(username) =>
+                  onChange={(name) =>
                     setRegCredentials({
                       ...Regcredentials,
-                      username,
+                      name,
                     })
                   }
                 />
@@ -103,7 +139,7 @@ function Authentication() {
                       password,
                     })
                   }
-                /><Button text={"Login"} />
+                /><Button type="button" text={"Register"} onClick={() => registerHandler()} />
                 <div className="registerlink">
                   <p>
                     {isLoginForm
