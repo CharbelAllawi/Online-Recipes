@@ -24,7 +24,7 @@ function Authentication() {
 
   return (
     <>
-      <h1 className="auth1">Recipe Secret</h1>
+      <h1 className="auth1">Recipe <span className='sline'>Secret</span></h1>
       <div className="flex row center maincontainer">
         <div className="flex row center">
           <img className="mainlogo" src={mainfood} alt="Logo" />
