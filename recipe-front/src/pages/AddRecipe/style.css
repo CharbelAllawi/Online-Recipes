@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+}
+
+.recipeform {
+  margin-left: 200px;
+}
+
+.authbtn {
+  border: 10px solid #060b26 !important;
+}
+
+h1 {
+  color: #060b26;
+  margin-top: 2%;
+}
+
+.drooling {
+  font-size: 50px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .recipeform {
+    margin-left: 0;
+  }
+
+  .authbtn {
+    border-width: 5px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .drooling {
+    font-size: 40px;
+  }
+}
