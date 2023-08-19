@@ -6,7 +6,7 @@ const Input = ({ onChange, label, placeholder, type = "text" }) => {
     <div className="flex column baseInput">
       <label>{label}</label>
       <input
-        className="roundedMedium"
+        className="x roundedMedium"
         type={type}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}

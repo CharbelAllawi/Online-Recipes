@@ -1,0 +1,69 @@
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 100%;
+
+
+
+}
+
+
+.auth1 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 400px;
+  width: 100%;
+  color: white;
+  font-size: 50px;
+
+}
+
+.mainlogo {
+  height: 995px;
+}
+
+.loginform {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+  width: 450px;
+}
+
+
+
+.registerform {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+}
+
+.registerlink {
+  background-color: rgb(255, 255, 255);
+  font-size: 20px;
+  color: black;
+  border-radius: 20px;
+  font-weight: bold;
+  padding: 20px 20px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+
+}
+
+.black-text {
+  font-weight: bold;
+
+}
+
+.reg {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}

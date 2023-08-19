@@ -1,5 +1,7 @@
 .baseButton {
-  height: 30px;
+  height: 35px;
+  width: 150px;
+  margin-top: 25px;
   font-size: 16px;
   padding: 5px 10px;
 }

@@ -87,3 +87,11 @@
 .pointer {
   cursor: pointer;
 }
+
+.border {
+  border: 2px solid black;
+}
+
+.absolute {
+  display: absolute;
+}
