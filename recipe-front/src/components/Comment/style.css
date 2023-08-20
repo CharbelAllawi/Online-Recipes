@@ -1,0 +1,115 @@
+.mainbox {
+  margin-left: -65px;
+
+}
+
+.detailBox {
+  width: 376px;
+  border: 1px solid #bbb;
+  margin: 50px;
+
+}
+
+.titleBox {
+  background-color: #fdfdfd;
+  padding: 10px;
+
+}
+
+.titleBox label {
+  color: #444;
+  margin: 0;
+
+  display: inline-block;
+}
+
+.commentBox {
+
+  padding: 10px;
+  border-top: 1px dotted #bbb;
+
+}
+
+
+.commentBox .form-group:first-child,
+.actionBox .form-group:first-child {
+  width: 80%;
+}
+
+.commentBox .form-group:nth-child(2),
+.actionBox .form-group:nth-child(2) {
+  width: 18%;
+
+}
+
+.actionBox .form-group * {
+  width: 100%;
+}
+
+.taskDescription {
+  margin-top: 10px 0;
+
+}
+
+.commentList {
+  padding: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow: auto;
+  height: 100px;
+}
+
+.commentList li {
+  margin: 0;
+  margin-top: 10px;
+
+}
+
+.commentList li>div {
+  display: table-cell;
+}
+
+.commenterImage {
+  width: 30px;
+  margin-right: 5px;
+  height: 100%;
+  float: left;
+}
+
+.commenterImage img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.commentText p {
+
+  margin: 0;
+}
+
+.sub-text {
+  color: #aaa;
+  font-family: verdana;
+  font-size: 11px;
+}
+
+.actionBox {
+  border-top: 1px dotted #bbb;
+  padding: 10px;
+}
+
+.form-control {
+  display: flex;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid black;
+  margin-left: 30px;
+
+
+}
+
+.AddComment {
+  margin-top: 10px;
+  padding-top: 10px;
+  height: 250px;
+}
