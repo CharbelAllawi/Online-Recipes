@@ -1,11 +1,21 @@
 import React from 'react'
 import Navbar from '../../components/Navbar/Navbar'
-import Comment from '../../components/Comment'
+import Card from '../../components/Card'
 function Landing() {
   return (
     <>
       <Navbar />
-      <Comment />
+      <div>
+        <Navbar />
+        <ul className="cards">
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </ul>
+      </div>
     </>
 
   )

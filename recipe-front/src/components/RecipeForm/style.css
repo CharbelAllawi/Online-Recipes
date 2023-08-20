@@ -28,6 +28,7 @@ h1 {
 
 .morebtn {
   margin-right: 15px;
+  margin-left: 35px ;
 }
 
 .drooling {
@@ -73,6 +74,7 @@ h1 {
 }
 
 .qtyinput {
+  font-size: 16px;
   border: 2px solid black;
 }
 

@@ -38,7 +38,7 @@ function RecipeForm() {
           ingredients: [...Recipe.ingredients, newIngredient],
         });
         ingredientInputRef.current.value = "";
-        setSelectedQuantity('1'); // Reset selected quantity to default
+        setSelectedQuantity('1');
         setCustomQuantity('');
       } else {
       }
@@ -121,7 +121,7 @@ function RecipeForm() {
             <option value="ml">Milliliter (ml)</option>
             <option value="L">Liter (L)</option>
           </select>
-          {selectedQuantity !== 'custom' ? ( // Render input field when not in "Custom" mode
+          {selectedQuantity !== 'custom' ? (
             <input className='qtyinput'
               type="number"
               min="1"
@@ -130,7 +130,7 @@ function RecipeForm() {
               onChange={(e) => setSelectedQuantity(e.target.value)}
             />
           ) : (
-            <input
+            <input className='numinp'
               type="number"
               min="1"
               placeholder="Enter custom quantity"
@@ -138,7 +138,7 @@ function RecipeForm() {
               onChange={(e) => setCustomQuantity(e.target.value)}
             />
           )}
-          <div className='flex'>
+          <div className=' flex'>
             <div className='morebtn'>
               <Button text={"Add"} isInputDisabled={isInputDisabled} onClick={handleMoreClick} />
             </div>
