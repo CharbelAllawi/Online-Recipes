@@ -1,7 +1,9 @@
 import React from "react";
 import "./style.css";
 
-const Input = ({ onChange, label, placeholder, type = "text" }) => {
+const Input = ({ onChange, label, placeholder, type = "text", disabled, inputRef }) => {
+  const placeholderText = disabled ? "Can't edit anymore" : placeholder;
+
   return (
     <div className="flex column baseInput">
       <label>{label}</label>
@@ -9,7 +11,9 @@ const Input = ({ onChange, label, placeholder, type = "text" }) => {
         className="roundedMedium"
         type={type}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
+        placeholder={placeholderText}
+        disabled={disabled}
+        ref={inputRef}
       />
     </div>
   );
