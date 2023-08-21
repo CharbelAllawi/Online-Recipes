@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ShoppingList extends Model
+class Shopping extends Model
 {
-    use HasFactory;
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function items()
+    public function recipe()
     {
-        return $this->hasMany(ShoppingListItem::class);
+        return $this->belongsTo(Recipe::class);
     }
 }

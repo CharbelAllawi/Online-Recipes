@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    use HasFactory;
+    protected $fillable = ['images'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

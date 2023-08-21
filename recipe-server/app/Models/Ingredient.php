@@ -7,14 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ingredient extends Model
 {
-    use HasFactory;
-    public function recipes()
-    {
-        return $this->belongsToMany(Recipe::class, 'recipe_ingredients')->withPivot('quantity');
-    }
+    protected $fillable = ['images'];
 
-    public function shoppingListItems()
+    public function recipe()
     {
-        return $this->belongsToMany(ShoppingListItem::class, 'ingredient_id');
+        return $this->belongsTo(Recipe::class);
     }
 }

@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MealPlan extends Model
+class Calendar extends Model
 {
-    use HasFactory;
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function recipes()
+    public function recipe()
     {
-        return $this->belongsToMany(Recipe::class, 'meal_plan_recipes');
+        return $this->belongsTo(Recipe::class);
     }
 }

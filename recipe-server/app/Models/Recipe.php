@@ -7,20 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    use HasFactory;
-    public function user()
+    protected $fillable = ['name', 'cuisine'];
+
+    public function images()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Image::class);
     }
 
     public function ingredients()
     {
-        return $this->belongsToMany(Ingredient::class, 'recipe_ingredients')->withPivot('quantity');
+        return $this->hasMany(Ingredient::class);
     }
 
     public function likes()
     {
-        return $this->belongsToMany(User::class, 'likes');
+        return $this->hasMany(Like::class);
     }
 
     public function comments()
@@ -28,13 +29,12 @@ class Recipe extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function shares()
+    public function shoppingLists()
     {
-        return $this->belongsToMany(User::class, 'shares');
+        return $this->hasMany(Shopping::class);
     }
 
-    public function mealPlans()
+    public function calendars()
     {
-        return $this->belongsToMany(MealPlan::class, 'meal_plan_recipes');
-    }
-}
+        return $this->hasMany(Calendar::class);
+    }}
