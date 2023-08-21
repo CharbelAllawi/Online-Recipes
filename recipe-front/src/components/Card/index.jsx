@@ -24,6 +24,17 @@ const Card = ({ image_url = "french-food.jpg", likes_count, post_id }) => {
           <img src={`http://localhost:8000/storage/images/posts/${image_url}`} alt="Image" />
           <div className="card__content">
             <div className="card__title">
+
+
+
+
+
+
+
+
+
+
+              
               <div className='socialmedia'>
                 <FacebookShareButton
                   url={shareUrl}

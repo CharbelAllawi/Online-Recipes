@@ -6,7 +6,6 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { sendRequest } from "../../core/config/request";
 import { requestMethods } from "../../core/enums/requestMethods";
-import { useNavigate } from 'react-router-dom';
 
 
 function RecipeForm() {
@@ -22,26 +21,35 @@ function RecipeForm() {
   const [customQuantity, setCustomQuantity] = useState('');
   const ingredientInputRef = useRef(null);
   const fileInputRef = useRef(null);
-  const navigation = useNavigate();
 
 
-  const handleShareRecipe = async () => {
+  const handleShareClick = async () => {
+    const formData = new FormData();
+    formData.append('name', Recipe.name);
+    formData.append('cuisine', Recipe.cuisine);
+    formData.append('ingredients', Recipe.ingredients);
 
-    let recipe = JSON.stringify(Recipe, null, 2);
+    // Append each image file to formData as an array
+    if (Recipe.images && Recipe.images.length > 0) {
+      Recipe.images.forEach((image, index) => {
+        formData.append(`images[${index}]`, image.file);
+      });
+    }
 
     try {
       const response = await sendRequest({
-        method: requestMethods.POST,
-        route: "/postrecipe",
-        body: recipe,
+        method: "POST",
+        route: "/sharerecipe",
+        body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
-      navigation("/landing");
-
     } catch (error) {
       console.log(error);
     }
+  };
 
-  }
   const handleDoneClick = async () => {
     setInputDisabled(true);
 
@@ -57,10 +65,12 @@ function RecipeForm() {
 
       if (ingredient && measurement && quantity > 0) {
         let newIngredient = `${quantity} ${measurement} ${ingredient}`;
-        setRecipe({
-          ...Recipe,
-          ingredients: [...Recipe.ingredients, newIngredient],
-        });
+        setRecipe((prevRecipe) => ({
+          ...prevRecipe,
+          ingredients: prevRecipe.ingredients
+            ? prevRecipe.ingredients + `, ${newIngredient}`
+            : newIngredient,
+        }));
         ingredientInputRef.current.value = "";
         setSelectedQuantity('1');
         setCustomQuantity('');
@@ -68,6 +78,10 @@ function RecipeForm() {
       }
     }
   };
+
+
+
+
   const handleFileChange = (e) => {
     const files = e.target.files;
     if (files.length > 0) {
@@ -179,7 +193,7 @@ function RecipeForm() {
           You can add as many images as you want by clicking on "Choose File."
         </p>
         <br />
-        <Button text={"Share Recipe!"} isInputDisabled={isInputDisabled} onClick={handleShareRecipe} />
+        <Button text={"Share Recipe!"} isInputDisabled={isInputDisabled} onClick={handleShareClick} />
       </form>
     </div>
   );

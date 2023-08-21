@@ -37,4 +37,5 @@ class Recipe extends Model
     public function calendars()
     {
         return $this->hasMany(Calendar::class);
-    }}
+    }
+}
