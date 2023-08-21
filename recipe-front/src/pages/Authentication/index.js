@@ -17,7 +17,7 @@ function Authentication() {
     password: null,
   });
   const [Regcredentials, setRegCredentials] = useState({
-    name: null,
+    username: null,
     email: null,
     password: null,
   });
@@ -110,10 +110,10 @@ function Authentication() {
                   className="authbtn"
                   label={"Username"}
                   placeholder={"Type your username here..."}
-                  onChange={(name) =>
+                  onChange={(username) =>
                     setRegCredentials({
                       ...Regcredentials,
-                      name,
+                      username,
                     })
                   }
                 />

@@ -4,6 +4,10 @@ import chefAnimationData from './chef.json';
 import './style.css';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { sendRequest } from "../../core/config/request";
+import { requestMethods } from "../../core/enums/requestMethods";
+import { useNavigate } from 'react-router-dom';
+
 
 function RecipeForm() {
   const container = useRef(null);
@@ -11,17 +15,37 @@ function RecipeForm() {
     name: '',
     cuisine: '',
     ingredients: [],
-    image: null,
   });
   const [isInputDisabled, setInputDisabled] = useState(false);
   const [PlaceHolder, setPlaceHolder] = useState("Type your ingredients here...");
-  const [selectedQuantity, setSelectedQuantity] = useState('1'); // Store selected quantity as a string
-  const [customQuantity, setCustomQuantity] = useState(''); // New state for custom quantity
+  const [selectedQuantity, setSelectedQuantity] = useState('1');
+  const [customQuantity, setCustomQuantity] = useState('');
   const ingredientInputRef = useRef(null);
   const fileInputRef = useRef(null);
+  const navigation = useNavigate();
 
-  const handleDoneClick = () => {
+
+  const handleShareRecipe = async () => {
+
+    let recipe = JSON.stringify(Recipe, null, 2);
+
+    try {
+      const response = await sendRequest({
+        method: requestMethods.POST,
+        route: "/postrecipe",
+        body: recipe,
+      });
+      navigation("/landing");
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+  const handleDoneClick = async () => {
     setInputDisabled(true);
+
+
   };
 
   const handleMoreClick = () => {
@@ -67,10 +91,7 @@ function RecipeForm() {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(JSON.stringify(Recipe, null, 2));
-    console.log(Recipe);
-  }, [Recipe]);
+
 
   return (
     <div className="flex column center">
@@ -158,7 +179,7 @@ function RecipeForm() {
           You can add as many images as you want by clicking on "Choose File."
         </p>
         <br />
-        <Button text={"Share Recipe!"} isInputDisabled={isInputDisabled} onClick={handleDoneClick} />
+        <Button text={"Share Recipe!"} isInputDisabled={isInputDisabled} onClick={handleShareRecipe} />
       </form>
     </div>
   );
