@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('recipe_id');
+            $table->unsignedBigInteger('recipe_id');    
+            $table->text('text');
+            $table->date('date');
             $table->timestamps();
             $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
         });
