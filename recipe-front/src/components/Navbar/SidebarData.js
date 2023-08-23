@@ -18,13 +18,13 @@ export const SidebarData = [
   },
   {
     title: 'Shopping List',
-    path: '/products',
+    path: '/shopping',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
   {
     title: 'Calendar',
-    path: '/team',
+    path: '/calendar',
     icon: <IoIcons.IoMdCalendar />,
     cName: 'nav-text'
   },

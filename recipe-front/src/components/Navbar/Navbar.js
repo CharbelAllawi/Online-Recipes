@@ -11,9 +11,7 @@ function Navbar() {
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className='navbar'>
-          <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars />
-          </Link>
+
         </div>
         <nav className='nav-menu active'> {/* Always open */}
           <ul className='nav-menu-items'>
