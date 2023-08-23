@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --max-w: 1200px;
+
+  --grey-1: #ececec;
+  --grey-2: #a0a09f;
+  --grey-3: #313131;
+
+  --accent-1: #bbd813;
+  --accent-2: #d3ef37;
+}
+
+
+
+.Addrecipe {
+  margin-left: 250px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.special-link {
+  color: var(--accent-1);
+}
+
+.site-header .special-link {
+  justify-self: end;
+}
+
+.special-link span {
+  font-size: 13px;
+  margin-left: 3px;
+  transition: all 0.2s;
+}
+
+.special-link:hover span {
+  transform: translateX(5px);
+}
+
+
+main {}
+
+
+.search {
+  height: 350px;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  padding: 100px 0 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.search::before {
+  content: '';
+  background: url('https://i.ibb.co/Rv8cYS8/0.jpg');
+  position: absolute;
+  top: -130px;
+  right: 0;
+  bottom: 0;
+  left: -10px;
+  transform: translateZ(-0.5px) scale(1.5);
+  height: 3000px;
+}
+
+
+.search form {
+  position: relative;
+}
+
+.search input {
+  max-width: calc(100vw - 20px);
+  width: 750px;
+  font-size: 25px;
+  font-family: 'Playfair Display', serif;
+  border: none;
+  padding: 10px 30px 15px;
+  color: var(--grey-3);
+  outline: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, .9);
+  transition: all 0.2s;
+}
+
+.search input:focus {
+  width: 780px;
+}
+
+.search input:focus::placeholder {
+  color: var(--grey-2);
+}
+
+.search input::placeholder {
+  font-style: italic;
+  color: var(--grey-3);
+  transition: all 0.2s;
+}
+
+.search button {
+  position: absolute;
+  right: 30px;
+  bottom: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.search .fa-search {
+  font-size: 25px;
+  color: var(--grey-3);
+}
+
+.lh1 {
+  margin-top: -80px;
+  font-size: 50px;
+  color: white;
+}
