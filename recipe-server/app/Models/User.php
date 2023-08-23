@@ -75,4 +75,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Calendar::class);
     }
+    public function plans()
+    {
+        return $this->hasMany(Plan::class);
+    }
 }
