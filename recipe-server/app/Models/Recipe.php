@@ -11,7 +11,11 @@ class Recipe extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->hasMany(Image::class, 'recipe_id');
+    }
+    public function recipeLikes()
+    {
+        return $this->hasOne(RecipeLike::class, 'recipe_id');
     }
 
     public function ingredients()
