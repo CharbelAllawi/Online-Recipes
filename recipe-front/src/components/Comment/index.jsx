@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 import Button from '../Button';
-
-function Comment() {
+import { sendRequest } from "../../core/config/request";
+import { requestMethods } from "../../core/enums/requestMethods";
+function Comment({ recipe_id }) {
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
   const addComment = () => {
@@ -12,9 +13,65 @@ function Comment() {
         date: new Date().toLocaleDateString(),
       };
       setComments([...comments, newComment]);
+      addComments();
       setCommentText('');
     }
+
   };
+  const addComments = async () => {
+    const formData = new FormData();
+    formData.append('recipe_id', recipe_id);
+    formData.append('comment', commentText);
+
+    try {
+      const response = await sendRequest({
+        method: "POST",
+        route: "/addComment",
+        body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getcomments = async () => {
+    const formData = new FormData();
+    formData.append('recipe_id', recipe_id);
+    try {
+      const response = await sendRequest({
+        method: "POST",
+        route: "/getComments",
+        body: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      response.comments.forEach(comment => {
+        const newComment = {
+          text: comment.text,
+          date: comment.date,
+        };
+        setComments((comments) => [...comments, newComment]);
+        setCommentText('');
+
+      })
+    } catch (error) {
+      console.log(error);
+    }
+
+  };
+  useEffect(() => {
+    getcomments();
+
+  }, [])
+
+
+
+
   return (
     <div className="mainbox">
       <div className="detailBox">
