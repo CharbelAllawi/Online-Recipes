@@ -29,7 +29,6 @@ function RecipeForm() {
     formData.append('cuisine', Recipe.cuisine);
     formData.append('ingredients', Recipe.ingredients);
 
-    // Append each image file to formData as an array
     if (Recipe.images && Recipe.images.length > 0) {
       Recipe.images.forEach((image, index) => {
         formData.append(`images[${index}]`, image.file);
