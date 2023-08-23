@@ -1,0 +1,32 @@
+.calender-container {
+    position: absolute;
+    top: 130px;
+    left: 300px;
+}
+
+.fc {
+    height: 70vh;
+    width: 70vw;
+    min-width: 700px;
+    min-height: 450px;
+    background-color: white;
+}
+
+
+.fc-event-title-container {
+    font-size: 1.1rem;
+    text-wrap: balance;
+}
+
+.fc-header-toolbar {
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-right: 40px;
+    height: 75px;
+}
+
+.calender-animation-container {
+    position: absolute;
+    top: -130px;
+    left: -17px
+}
